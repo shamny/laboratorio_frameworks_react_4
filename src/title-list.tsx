@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 
 interface Props {
-  company: String;
+  company: string;
 }
 
 export const TitleList: React.FC<Props> = (props) => {
