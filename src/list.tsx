@@ -19,7 +19,7 @@ export const ListPage: React.FC = () => {
   const [filter, setFilter] = React.useState("lemoncode");
   const [tempFilter, setTempFilter] = React.useState("lemoncode");
   const [open, setOpen] = React.useState(false);
-  const [reason, setReason] = React.useState("");
+  const [reason, setReason] = React.useState();
 
   const classes = useStyles();
 
@@ -37,19 +37,7 @@ export const ListPage: React.FC = () => {
     tempFilter.length > 0 ? setFilter(tempFilter) : handlerAlert(true, 1);
 
   const changeOpenAlert = (open) => setOpen(open);
-  const changeReasonAlert = (reason) => {
-    switch (reason) {
-      case 1:
-        setReason("No has escrito ninguna compañía para buscar");
-        break;
-      case 2:
-        setReason("No hay datos de usuarios de la compañía que estás buscando");
-        break;
-      default:
-        setReason("Pero qué razón es esta?...");
-        break;
-    }
-  };
+  const changeReasonAlert = (reason) => setReason(reason);
 
   const handlerAlert = (open, reason) => {
     changeOpenAlert(open);
@@ -60,8 +48,8 @@ export const ListPage: React.FC = () => {
   return (
     <>
       <AlertFilterSearch
-        reason={reason}
         open={open}
+        reason={reason}
         changeOpen={changeOpenAlert}
         changeReason={changeReasonAlert}
       />
